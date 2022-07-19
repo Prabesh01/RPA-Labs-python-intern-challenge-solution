@@ -1,0 +1,52 @@
+{% include "home.html" %}
+<title>Upload</title>
+<body> 
+<form method="POST" id="upload" class="post-form" enctype="multipart/form-data">  
+<div id="msg">{{ msg }} </div>  
+
+        {% csrf_token %}  
+        {{ form.as_p }}  
+		<!-- {{ form.errors }} -->
+<!-- {{ form.non_field_errors }} -->
+
+        <button type="submit" onclick="sub()" id="submit" class="save btn btn-default">Upload</button>  
+</form> 
+<script>
+var vid = document.createElement('video');
+const input = document.getElementById('file_id');
+input.onchange = () => {
+	if (!input.files[0]) {
+        return;
+    } else {
+        var file = input.files[0];
+        if(file.name.split('.').pop().toLowerCase()!='mp4' && file.name.split('.').pop().toLowerCase()!='mkv'){
+		document.getElementById('submit').disabled = true;		
+		document.getElementById('msg').innerHTML="Only mp4 and mkv files are allowed";
+		}
+		else if(file.size/1000>1000000){
+		document.getElementById('submit').disabled = true;		
+		document.getElementById('msg').innerHTML="The maximum file size that can be uploaded is 1GB";
+		}
+		else{
+		document.getElementById('submit').disabled = false;
+		}
+	  var fileURL = URL.createObjectURL(file);
+	  vid.src = fileURL;
+  vid.ondurationchange = function() {
+    if(this.duration>600){
+		document.getElementById('submit').disabled = true;		
+		document.getElementById('msg').innerHTML="Video can't be longer than 10 minutes";	
+	}
+  };
+		
+    }
+};
+function sub(){
+	if (!input.files[0]) {
+        return;
+    } else {
+document.getElementById('msg').innerHTML="Uploading.."
+}
+}
+</script> 
+</body> 

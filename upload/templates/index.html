@@ -1,0 +1,27 @@
+<title>Home</title>
+D E T A I L :
+<pre>
+The requirements were:
+- endpoint to receive video file: upload/
+- This endpoint does the following:
+	- validation of length, type and size of video file
+	- won't upload and returns error message if video:
+		- is not mkv or mp4
+		- exceeds 10 min duration or 1 GB file size limit
+- endpoint to respond with a list of uploaded videos: api/list/
+- feel free to add filters: well, I wasn't free xD. I beleive this was optional requirement anyways
+- endpoint to do validation and return the charges based on the video size and duration: /api/fee
+</pre>
+
+P O C : 
+<ul>
+<li><a href="/upload">Upload</a></li>
+<li><a href="/list">View List</a></li>
+<li><a href="api/fee/?size=500000&duration=600000&type=mp4">Charges</a></li>
+</ul>
+
+L O G I N :<br>
+There's no authenticaltion system as it wasn't specified in the requirements.
+If for some reason you  need to view <a href="/admin">django's admin panel</a>,  Username: "user" and Password: "pass"
+<br><br>F I N A L  W O R D S<br>
+So yea this is it. Please do <a href="mailto:pspsapkota2059@gmail.com">write back</a> remarks after judging. It will help me get better :)
