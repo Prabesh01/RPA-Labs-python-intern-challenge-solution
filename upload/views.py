@@ -6,6 +6,7 @@ from .forms import uploadvideo
 from moviepy.editor import VideoFileClip
 import uuid
 from pathlib import Path
+from os import remove
 
 def index(request):
     return render(request,'index.html')
@@ -29,8 +30,10 @@ def upload(request):
             with open(filepath, 'wb+') as destination:  
                 for chunk in request.FILES['file'].chunks():  
                     destination.write(chunk)  
-            filetime=float(VideoFileClip(filepath).duration)
+            with VideoFileClip(filepath) as clip:
+                filetime=float(clip.duration)
             if filetime>600:
+                remove(filepath)
                 return render(request,"upload.html",{'form':video,'msg':'Video can\'t be longer than 10 minutes'}) 
             else:
                 vids(filename=filename,filesize=filesize,duration=filetime,filetype=extension).save() 
