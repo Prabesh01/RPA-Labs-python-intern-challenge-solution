@@ -8,3 +8,11 @@ _Assuming you have latest python installed_
 - Give it some time
 - `python manage.py runserver`
 - Done. Visit [127.0.0.1:8000](http://127.0.0.1:8000/) to view the webapp
+
+### The result BTW:
+_The selected mates were,_ 
+  - [Bhuwan Panta](https://github.com/Bhuwan-web/cloudVideo/invitations) and 
+  - [Jeevan Niroula](https://github.com/RedSnyper/rpa_assessment/)
+  
+And here's my scores:
+![ss](https://i.ibb.co/zH9wvYw/rpa.png)
